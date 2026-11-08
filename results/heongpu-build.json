@@ -1,0 +1,49 @@
+{
+  "utc": "2026-11-08T22:45:06.428489+00:00",
+  "revision": "837ffc87aa263bdfebfdfd1d077e5a52c7ae1ed1",
+  "upstream_clean": true,
+  "submodules": [
+    "b743607c1173000718ca1f84016fd03093ebb6fc thirdparty/GPU-FFT (v0.0.0~1)",
+    " 8a4daf11c7cdea8dde45fa0f8f7183c138d42b3b thirdparty/GPU-NTT (v0.0.0~4)",
+    " e2f4a85dfbd9ddecb5c97da513fa84d5f21dd005 thirdparty/RNGonGPU (heads/main)",
+    " 95c739c48d11827277e132f5eec4d4e454d60835 thirdparty/RNGonGPU/thirdparty/GPU-NTT (v0.0.0~3)"
+  ],
+  "nvcc": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2026 NVIDIA Corporation\nBuilt on Tue_Jun_09_02:43:40_PM_PDT_2026\nCuda compilation tools, release 13.3, V13.3.73\nBuild cuda_13.3.r13.3/compiler.38244171_0",
+  "gxx": "13.3.0",
+  "cmake": "cmake version 4.1.3",
+  "settings": [
+    "CMAKE_BUILD_TYPE:STRING=Release",
+    "CMAKE_CUDA_ARCHITECTURES:UNINITIALIZED=120"
+  ],
+  "source_sha256": {
+    "native/ckks_study.cpp": "5d42d668a0efeaf2eb2d76ecc6795a487ac665cd98f02d3822a49c44151ea559",
+    "native/bootstrap_study.cpp": "fdfe2478e0485035332b32e6ec4ec835cead61cdf8a6639d59c20daee367ad14",
+    "native/attach_heongpu.cmake": "c93fc2ffb88de104e1c9648cf418c7dc10464ccaacc26c56e1e882ab5fe44574",
+    "collect_heongpu_build.py": "beb96156cf085ec159fb0f732363e548e8481f31c1e93a9646d65a920364294d"
+  },
+  "result_sha256": {
+    "ckks-16384-replication.json": "15a538faa4044613a92924b012d892849c2e32e2d4cf6cadb953d6b3204d9679",
+    "ckks-16384.json": "e444d638691211d8d110d3bf911319dd0f41a12bd99a108f6755162f79414e78",
+    "ckks-8192-replication.json": "eaf10952de048c127faa147a49e06c0f9e644175a0f8015f49c89a949d2d09f8",
+    "ckks-8192.json": "032714542db256add9f96352db738f5ea3e1dfb38f64a35c288cadfa1c9f66fb",
+    "bootstrap-replication.json": "af37f7a7d909c1ba4baccfe6bc16bd920d5f02681041d0705044f4dcf6a5d176",
+    "bootstrap.json": "0fa7382bbed3c7658c7eeac8be37cb39816677f2abbb4e343e24afcd91fe4e38"
+  },
+  "binary_sha256": {
+    "requant_ckks_study": "63704e5f6436a8234a8e6e3a9516fd799ab5c5efe371aa2364a81124617a6ccb",
+    "requant_bootstrap_study": "e2c16b8354ec85c963e3080b19e9797cce35059a742ec4f845775c5ba6a4d342"
+  },
+  "dependencies": {
+    "RMM": "26.08.00",
+    "CCCL": "3.4.3",
+    "OpenSSL": "3.0.13",
+    "GMP": "6.3.0",
+    "NTL": "11.5.1",
+    "GF2X": "1.3.0"
+  },
+  "dependency_source_revisions": {
+    "rmm-src": "42d059f127b4a2aef21367930a0491de3a01bfc7",
+    "spdlog-src": "27cb4c76708608465c413f6d0e6b8d99a4d84302"
+  },
+  "scope": "Post-run provenance for executed unmodified-library API harnesses. Native executable hashes are informational: rebuilds need not be byte-identical. Library sec128 is not an independent security audit."
+}

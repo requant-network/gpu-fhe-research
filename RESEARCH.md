@@ -1,34 +1,23 @@
-# Research plan
+# Research program and decisions
 
-## Question
+A research project by [Requant Network](https://requant.network).
 
-Can RNS conversion, polynomial transforms, and key-switch data movement be co-designed to reduce complete bootstrapping cost?
+## Completed campaign
 
-## Hypothesis and boundaries
+Do exact RNS arithmetic improvements survive data movement, and can realistic CKKS workloads and bootstrapping execute on a 16 GB consumer GPU?
 
-The first experiment computes exact negacyclic products in Z_65537[X]/(X^N+1), using two auxiliary NTT primes and centered CRT reconstruction. It proves the reconstruction range for each tested size and compares with independent quadratic schoolbook multiplication. A third-prime basis-extension check covers signed integers. This is an arithmetic experiment, not an encryption scheme, key-switch implementation, bootstrapping benchmark, or claim of a cryptographic security level.
+The [final report](FINAL_REPORT.md) documents the hypotheses, mathematical contract, two-seed measurements, independent checks, negative outcomes and conclusions. Completion refers to this bounded experimental campaign; it does not mean the field has no open questions.
 
-## Completed first experiment
+| Completed experiment | Executable source | Primary evidence |
+| --- | --- | --- |
+| Large-ring exact RNS/NTT ablations | [large_ntt_study.py](large_ntt_study.py) | [results/large-ntt.json](results/large-ntt.json) |
+| Independent Shoup bounds | [validate_shoup.py](validate_shoup.py) | [results/large-ntt.json](results/large-ntt.json) |
+| Actual CKKS encrypted square | [native/ckks_study.cpp](native/ckks_study.cpp) | [results/ckks-16384.json](results/ckks-16384.json) |
+| Actual unmodified slim bootstrap | [native/bootstrap_study.cpp](native/bootstrap_study.cpp) | [results/bootstrap.json](results/bootstrap.json) |
+| Pinned library/build provenance | [collect_heongpu_build.py](collect_heongpu_build.py) | [results/heongpu-build.json](results/heongpu-build.json) |
 
-python run.py checks 1005 signed CRT/basis-extension values and 15 polynomial products at N=4,16,64,256,1024. Zero, maximum coefficients, and seeded random values are covered. Primitive-root order is checked for every transform size.
+The matching replication records and complete median/p95 data are indexed in [stage2-summary.csv](results/stage2-summary.csv). [GPU_REPORT.md](GPU_REPORT.md) preserves the preliminary Stage-1 experiments.
 
-## Completed GPU campaign
+## Work beyond this campaign
 
-[GPU_REPORT.md](GPU_REPORT.md) records the executed two-seed campaign, mathematical contract, independent checks, raw timings, ablations, negative findings and next decisions. All study sources and records are public. This extends the CPU baseline without claiming a complete cryptographic protocol.
-
-## Next experiments
-
-1. Scale the tested GPU NTT/CRT pipeline to multi-block transforms and realistic RNS chains; compare with a pinned optimized library.
-2. Profile key switching and bootstrapping in a pinned public library at its documented security parameters.
-3. Investigate CKKS/TFHE switching only with matched precision, security parameters, and conversion cost.
-
-## Evidence required
-
-Report a full-operation comparison against a pinned baseline, independent correctness checks, memory requirements, and energy observations. Distinguish algorithmic improvement from changed workloads or weaker validation. An upstream verifier must accept any claimed protocol improvement.
-
-## Sources
-
-- [HEonGPU](https://github.com/enCRYPTON-labs/HEonGPU)
-- [WarpDrive](https://zhengfangyu.github.io/assets/papers/HPCA2025.pdf)
-- [Chameleon](https://arxiv.org/abs/2410.05934)
-- [TIGER](https://arxiv.org/abs/2604.04783)
+Arithmetic acceleration is demonstrated; the transfer-inclusive 20% gate is not met. Real CKKS and slim bootstrapping on this consumer GPU are validated as a separate completed feasibility study. The most useful next experiment is to integrate a compatible arithmetic change into a pinned key-switch/rescale/bootstrap path and measure its actual share of application latency. Wider primes, fused basis conversion, key movement, sustained memory pressure and sampled energy remain distinct future studies. The present data do not justify replacing production HEonGPU arithmetic.

@@ -1,5 +1,9 @@
 # Measurement methods
 
+**Completed campaign:** Completed Stage 2: exact large-ring RNS/Shoup/tiled NTT tests, real CKKS encryption/evaluation/decryption, and unmodified slim bootstrapping on RTX 5060 Ti 16 GB. Largest resident arithmetic improves about 35.6%; transfers limit the gain to about 12%. Actual bootstrap takes about 175–176 ms. Our arithmetic kernels are not integrated into the upstream bootstrap.
+
+The [final report](FINAL_REPORT.md) supersedes the preliminary scope and next-step list below. It contains the completed experiments, reproducible commands, negative outcomes and remaining work beyond this campaign. Historical Stage-1 details follow.
+
 Research date: 2026-11-09, Asia/Yekaterinburg. Raw timestamps use UTC.
 
 ## First-stage CPU evidence

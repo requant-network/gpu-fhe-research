@@ -4,7 +4,11 @@ Exact polynomial arithmetic research toward efficient FHE GPU pipelines.
 
 A research project by [Requant Network](https://requant.network).
 
-**Stage 1: GPU experiments executed, independently checked, and replicated on RTX 5060 Ti.**
+**Research campaign completed: CPU references, two-seed GPU experiments and final conclusions published.**
+
+Completed Stage 2: exact large-ring RNS/Shoup/tiled NTT tests, real CKKS encryption/evaluation/decryption, and unmodified slim bootstrapping on RTX 5060 Ti 16 GB. Largest resident arithmetic improves about 35.6%; transfers limit the gain to about 12%. Actual bootstrap takes about 175–176 ms. Our arithmetic kernels are not integrated into the upstream bootstrap.
+
+Read the [final research report](FINAL_REPORT.md) and [complete Stage-2 median/p95 table](results/stage2-summary.csv). The Stage-1 report below is retained as the preliminary campaign.
 
 Read the [GPU research report and conclusions](GPU_REPORT.md) for measured findings, negative results and the next research decisions.
 
@@ -12,7 +16,7 @@ Read the [GPU research report and conclusions](GPU_REPORT.md) for measured findi
 
 Can RNS conversion, polynomial transforms, and key-switch data movement be co-designed to reduce complete bootstrapping cost?
 
-## Current experiment scope
+## Stage-1 experiment scope
 
 The first experiment computes exact negacyclic products in Z_65537[X]/(X^N+1), using two auxiliary NTT primes and centered CRT reconstruction. It proves the reconstruction range for each tested size and compares with independent quadratic schoolbook multiplication. A third-prime basis-extension check covers signed integers. This is an arithmetic experiment, not an encryption scheme, key-switch implementation, bootstrapping benchmark, or claim of a cryptographic security level.
 
@@ -92,3 +96,8 @@ Original experiment code is MIT licensed. References retain their own licenses. 
 - [WarpDrive](https://zhengfangyu.github.io/assets/papers/HPCA2025.pdf)
 - [Chameleon](https://arxiv.org/abs/2410.05934)
 - [TIGER](https://arxiv.org/abs/2604.04783)
+
+## Related Requant Network research
+
+- [gpu-zk-research](https://github.com/requant-network/gpu-zk-research)
+- [gpu-pouw-research](https://github.com/requant-network/gpu-pouw-research)
