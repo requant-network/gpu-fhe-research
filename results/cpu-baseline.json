@@ -1,0 +1,108 @@
+{
+  "basis_extension_checks": 1005,
+  "polynomial_cases": [
+    {
+      "n": 4,
+      "pattern": "zero",
+      "rns_ntt_seconds": 6.700004450976849e-05,
+      "verified": true
+    },
+    {
+      "n": 4,
+      "pattern": "max",
+      "rns_ntt_seconds": 4.449998959898949e-05,
+      "verified": true
+    },
+    {
+      "n": 4,
+      "pattern": "random",
+      "rns_ntt_seconds": 3.769993782043457e-05,
+      "verified": true
+    },
+    {
+      "n": 16,
+      "pattern": "zero",
+      "rns_ntt_seconds": 0.00013560010120272636,
+      "verified": true
+    },
+    {
+      "n": 16,
+      "pattern": "max",
+      "rns_ntt_seconds": 0.00015700003132224083,
+      "verified": true
+    },
+    {
+      "n": 16,
+      "pattern": "random",
+      "rns_ntt_seconds": 0.00016549997963011265,
+      "verified": true
+    },
+    {
+      "n": 64,
+      "pattern": "zero",
+      "rns_ntt_seconds": 0.0007704999297857285,
+      "verified": true
+    },
+    {
+      "n": 64,
+      "pattern": "max",
+      "rns_ntt_seconds": 0.0007579999510198832,
+      "verified": true
+    },
+    {
+      "n": 64,
+      "pattern": "random",
+      "rns_ntt_seconds": 0.0007394999265670776,
+      "verified": true
+    },
+    {
+      "n": 256,
+      "pattern": "zero",
+      "rns_ntt_seconds": 0.0028556999750435352,
+      "verified": true
+    },
+    {
+      "n": 256,
+      "pattern": "max",
+      "rns_ntt_seconds": 0.0038616000674664974,
+      "verified": true
+    },
+    {
+      "n": 256,
+      "pattern": "random",
+      "rns_ntt_seconds": 0.00574890011921525,
+      "verified": true
+    },
+    {
+      "n": 1024,
+      "pattern": "zero",
+      "rns_ntt_seconds": 0.014082100009545684,
+      "verified": true
+    },
+    {
+      "n": 1024,
+      "pattern": "max",
+      "rns_ntt_seconds": 0.017168499995023012,
+      "verified": true
+    },
+    {
+      "n": 1024,
+      "pattern": "random",
+      "rns_ntt_seconds": 0.01692309998907149,
+      "verified": true
+    }
+  ],
+  "scope": "Small exact arithmetic baseline. No ciphertexts, key switching, bootstrapping, or security estimate.",
+  "environment": {
+    "python": "3.12.10",
+    "os": "Windows",
+    "architecture": "AMD64",
+    "processor": "AMD64 Family 25 Model 117 Stepping 2, AuthenticAMD"
+  },
+  "generated_at_utc": "2026-11-08T20:42:36.320701+00:00",
+  "source_sha256": {
+    "run.py": "fb6a7e53bb471379b4e59fe823f07a6ac0c892b60b358bd83a947e45f6b421a1",
+    "experiments/rns_ntt.py": "bef78982cf149219291ff90f8e7c2b179f84177f7d2af0379c77d0b62ba7495f",
+    "cuda/probe.cu": "d643ad56fa123500cc180279ce878dd05593faf3d7feaec73df518968243e1d7"
+  }
+}

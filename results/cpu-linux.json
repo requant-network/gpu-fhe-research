@@ -1,0 +1,108 @@
+{
+  "basis_extension_checks": 1005,
+  "polynomial_cases": [
+    {
+      "n": 4,
+      "pattern": "zero",
+      "rns_ntt_seconds": 9.186496026813984e-05,
+      "verified": true
+    },
+    {
+      "n": 4,
+      "pattern": "max",
+      "rns_ntt_seconds": 5.2521005272865295e-05,
+      "verified": true
+    },
+    {
+      "n": 4,
+      "pattern": "random",
+      "rns_ntt_seconds": 4.8833026085048914e-05,
+      "verified": true
+    },
+    {
+      "n": 16,
+      "pattern": "zero",
+      "rns_ntt_seconds": 0.00015112903201952577,
+      "verified": true
+    },
+    {
+      "n": 16,
+      "pattern": "max",
+      "rns_ntt_seconds": 0.0002227859804406762,
+      "verified": true
+    },
+    {
+      "n": 16,
+      "pattern": "random",
+      "rns_ntt_seconds": 0.0001815269934013486,
+      "verified": true
+    },
+    {
+      "n": 64,
+      "pattern": "zero",
+      "rns_ntt_seconds": 0.0006352359778247774,
+      "verified": true
+    },
+    {
+      "n": 64,
+      "pattern": "max",
+      "rns_ntt_seconds": 0.0008197890128940344,
+      "verified": true
+    },
+    {
+      "n": 64,
+      "pattern": "random",
+      "rns_ntt_seconds": 0.0008176139672286808,
+      "verified": true
+    },
+    {
+      "n": 256,
+      "pattern": "zero",
+      "rns_ntt_seconds": 0.002870953001547605,
+      "verified": true
+    },
+    {
+      "n": 256,
+      "pattern": "max",
+      "rns_ntt_seconds": 0.0037258680094964802,
+      "verified": true
+    },
+    {
+      "n": 256,
+      "pattern": "random",
+      "rns_ntt_seconds": 0.003704537986777723,
+      "verified": true
+    },
+    {
+      "n": 1024,
+      "pattern": "zero",
+      "rns_ntt_seconds": 0.013638606003951281,
+      "verified": true
+    },
+    {
+      "n": 1024,
+      "pattern": "max",
+      "rns_ntt_seconds": 0.01815803296631202,
+      "verified": true
+    },
+    {
+      "n": 1024,
+      "pattern": "random",
+      "rns_ntt_seconds": 0.018588906968943775,
+      "verified": true
+    }
+  ],
+  "scope": "Small exact arithmetic baseline. No ciphertexts, key switching, bootstrapping, or security estimate.",
+  "environment": {
+    "python": "3.12.3",
+    "os": "Linux",
+    "architecture": "x86_64",
+    "processor": "x86_64"
+  },
+  "generated_at_utc": "2026-11-08T20:42:58.944788+00:00",
+  "source_sha256": {
+    "run.py": "fb6a7e53bb471379b4e59fe823f07a6ac0c892b60b358bd83a947e45f6b421a1",
+    "experiments/rns_ntt.py": "bef78982cf149219291ff90f8e7c2b179f84177f7d2af0379c77d0b62ba7495f",
+    "cuda/probe.cu": "d643ad56fa123500cc180279ce878dd05593faf3d7feaec73df518968243e1d7"
+  }
+}
