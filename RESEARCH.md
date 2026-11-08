@@ -12,9 +12,13 @@ The first experiment computes exact negacyclic products in Z_65537[X]/(X^N+1), u
 
 python run.py checks 1005 signed CRT/basis-extension values and 15 polynomial products at N=4,16,64,256,1024. Zero, maximum coefficients, and seeded random values are covered. Primitive-root order is checked for every transform size.
 
+## Completed GPU campaign
+
+[GPU_REPORT.md](GPU_REPORT.md) records the executed two-seed campaign, mathematical contract, independent checks, raw timings, ablations, negative findings and next decisions. All study sources and records are public. This extends the CPU baseline without claiming a complete cryptographic protocol.
+
 ## Next experiments
 
-1. Implement GPU transforms and basis conversion with exact CPU cross-checks.
+1. Scale the tested GPU NTT/CRT pipeline to multi-block transforms and realistic RNS chains; compare with a pinned optimized library.
 2. Profile key switching and bootstrapping in a pinned public library at its documented security parameters.
 3. Investigate CKKS/TFHE switching only with matched precision, security parameters, and conversion cost.
 

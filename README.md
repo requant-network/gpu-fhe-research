@@ -4,7 +4,9 @@ Exact polynomial arithmetic research toward efficient FHE GPU pipelines.
 
 A research project by [Requant Network](https://requant.network).
 
-**Stage 0 вЂ” CPU arithmetic baseline and CUDA diagnostic preparation.**
+**Stage 1: GPU experiments executed, independently checked, and replicated on RTX 5060 Ti.**
+
+Read the [GPU research report and conclusions](GPU_REPORT.md) for measured findings, negative results and the next research decisions.
 
 ## Research question
 
@@ -18,7 +20,7 @@ The first experiment computes exact negacyclic products in Z_65537[X]/(X^N+1), u
 
 python run.py checks 1005 signed CRT/basis-extension values and 15 polynomial products at N=4,16,64,256,1024. Zero, maximum coefficients, and seeded random values are covered. Primitive-root order is checked for every transform size.
 
-The CUDA diagnostic compares 4096 pointwise modular products against exact Python integers. It does not yet implement the NTT, CRT, or full FHE operations on GPU.
+The CUDA diagnostic compares 4096 pointwise modular products against exact Python integers. The extended study implements GPU NTT and CRT; full encryption and bootstrapping remain outside its scope.
 
 ## Reproduce the CPU experiment
 
@@ -46,6 +48,32 @@ CUDA_DEVICE_ORDER=PCI_BUS_ID CUDA_VISIBLE_DEVICES=0 ./build/gpu-check results/gp
 ```
 
 The diagnostic uploads the fixture, warms up ten launches, times 100 launches using CUDA events, and compares every result with the exact fixture. Its timing covers the diagnostic kernel only. CPU preparation and transfers are outside that timer.
+
+The extended study measures full two-prime negacyclic products, shared-memory fusion, device CRT, constant-prime specialization and CUDA Graphs; see [GPU report](GPU_REPORT.md).
+
+## Reproduce the GPU study
+
+Tested on Linux x86_64, Python 3.12, RTX 5060 Ti 16 GB (SM 120), CUDA compiler 12.8.61, NVRTC 12.8, CUDA runtime API 12.9 (12090) and cuBLAS package 12.8.4.1. Install dependencies in a separate environment. CUDA 12.8 toolkit headers must be available; this study uses pinned CUDA 12.x wheels even when a newer toolkit is installed system-wide.
+
+```sh
+python3 -m venv .venv
+. .venv/bin/activate
+python -m pip install -r requirements-gpu.txt
+export CUDA_PATH=/path/to/cuda-12.8
+export CUDA_VISIBLE_DEVICES=0
+bash run_gpu.sh
+bash run_gpu.sh --seed 20261110 --output results/gpu-replication.json
+```
+
+Run without `-O`: assertions are mandatory correctness gates. Each case uses five warm-ups and thirty measured repetitions per variant, with alternating variant order. Two independent input seeds are retained. JIT compilation and plan construction are outside the timers. Read the report for the exact inclusion and exclusion rules of each timing column.
+
+- [GPU research report and conclusions](GPU_REPORT.md)
+- [Primary raw GPU campaign](results/gpu-study.json)
+- [Independent-seed replication](results/gpu-replication.json)
+- [Hardware and software record](results/gpu-environment.json)
+- [Derived latency table, median and p95](results/gpu-summary.csv)
+
+Rebuild the latency table and verify the recorded source hashes with `python summarize_results.py` (standard library only).
 
 ## Research record
 
