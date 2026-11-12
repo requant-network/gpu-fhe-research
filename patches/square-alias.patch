@@ -1,0 +1,14 @@
+--- a/src/lib/kernel/multiplication.cu
++++ b/src/lib/kernel/multiplication.cu
+@@ -116,7 +116,10 @@
+ 
+         Data64 out_0 = OPERATOR_GPU_64::mult(ct0_0, ct1_0, modulus[idy]);
+         Data64 out_1_0 = OPERATOR_GPU_64::mult(ct0_0, ct1_1, modulus[idy]);
+-        Data64 out_1_1 = OPERATOR_GPU_64::mult(ct0_1, ct1_0, modulus[idy]);
++        // Equal input addresses imply the same cross term; retain the full
++        // 64-bit modulus and the general two-operand multiplication path.
++        Data64 out_1_1 = in1 == in2 ? out_1_0 :
++            OPERATOR_GPU_64::mult(ct0_1, ct1_0, modulus[idy]);
+         Data64 out_2 = OPERATOR_GPU_64::mult(ct0_1, ct1_1, modulus[idy]);
+         Data64 out_1 = OPERATOR_GPU_64::add(out_1_0, out_1_1, modulus[idy]);
+ 

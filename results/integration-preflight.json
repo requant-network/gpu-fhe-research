@@ -1,0 +1,36 @@
+{
+  "scope": "Post-run record of observed setup failures, not a timing campaign. Original native harnesses remain available; their default host pool fraction uses immediately free memory, rather than MemAvailable. The later paired experiment uses a declared fixed256MiB host-pool cap within the same native API and retains every native memory/accuracy check.",
+  "failures": [
+    {
+      "phase": "independent coefficient program startup",
+      "exit_code": 127,
+      "last_line": "error while loading shared libraries: libgf2x.so.3: cannot open shared object file: No such file or directory",
+      "resolution": "Include the already installed dependency library directory in LD_LIBRARY_PATH."
+    },
+    {
+      "phase": "original baseline CKKS8192 context setup",
+      "seed": 20261112,
+      "exit_code": 2,
+      "last_line": "host max pool size must be >= host initial pool size",
+      "resolution": "Use the same explicit256MiB host-pool maximum for both new native baseline/modified executables. Originalinitialhost64/128MiB retained."
+    },
+    {
+      "phase": "recompiling paired native harness",
+      "exit_code": 1,
+      "last_line": "fatal error: gmp.h: No such file or directory",
+      "resolution": "Restore CPATH for the already installed GMP/NTL development headers, as required by the original external dependency build."
+    }
+  ],
+  "post_failure_memory_snapshot_kib": {
+    "MemTotal": 65710092,
+    "MemFree": 504692,
+    "MemAvailable": 57233144,
+    "Cached": 53453580
+  },
+  "source_sha256": {
+    "native/ckks_study.cpp": "5d42d668a0efeaf2eb2d76ecc6795a487ac665cd98f02d3822a49c44151ea559",
+    "native/bootstrap_study.cpp": "fdfe2478e0485035332b32e6ec4ec835cead61cdf8a6639d59c20daee367ad14",
+    "native/square_check.cu": "b0629404234f718505bd75bd445f5822401e23d4dfadeeb3a2b675ef17dba9ea"
+  },
+  "performance_claim": false
+}

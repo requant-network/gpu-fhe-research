@@ -21,3 +21,7 @@ The matching replication records and complete median/p95 data are indexed in [st
 ## Work beyond this campaign
 
 Arithmetic acceleration is demonstrated; the transfer-inclusive 20% gate is not met. Real CKKS and slim bootstrapping on this consumer GPU are validated as a separate completed feasibility study. The most useful next experiment is to integrate a compatible arithmetic change into a pinned key-switch/rescale/bootstrap path and measure its actual share of application latency. Wider primes, fused basis conversion, key movement, sustained memory pressure and sampled energy remain distinct future studies. The present data do not justify replacing production HEonGPU arithmetic.
+
+## Follow-up closure, 12 November 2026
+
+The [follow-up report](FOLLOWUP_REPORT.md) records the disposition of the concrete next steps: new experiments, negative findings and measured resource limits. The earlier completed campaign remains available for historical comparison. Run `python verify_followups.py` for the added evidence checks.
